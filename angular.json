@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "movie-machine"
+    }
+  },
+  "defaultProject": "movie-machine",
+  "cli": {
+    "analytics": false
+  }
 }
