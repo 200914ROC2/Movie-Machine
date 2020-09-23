@@ -1,1 +1,8 @@
-<div class="home block"></div>
+<div>
+<h2 *ngIf="resultList.length == 0">
+  No results.
+</h2>
+<div *ngIf="resultList.length > 0">
+  <app-result-card *ngFor="let result of resultList" [data]="result"></app-result-card>
+</div>
+</div>

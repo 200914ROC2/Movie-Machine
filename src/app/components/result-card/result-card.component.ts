@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-result-card',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultCardComponent implements OnInit {
 
+  @Input() data: any;
+  imageUrl = '';
   constructor() { }
 
   ngOnInit(): void {
+    this.imageUrl = "https://image.tmdb.org/t/p/original" + this.data.poster_path;
   }
 
 }
