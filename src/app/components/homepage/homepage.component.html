@@ -1,8 +1,10 @@
-<div>
-<h2 *ngIf="resultList.length == 0">
-  No results.
-</h2>
-<div *ngIf="resultList.length > 0">
-  <app-result-card *ngFor="let result of resultList" [data]="result"></app-result-card>
-</div>
+<div class="container">
+  <div class="row" *ngIf="resultList.length == 0">
+    <h2>No results.</h2>
+  </div>
+  <div class="row" *ngIf="resultList.length > 0">
+    <div class="col-md-6" *ngFor="let result of resultList">
+      <app-result-card [data]="result"></app-result-card>
+    </div>
+  </div>
 </div>
