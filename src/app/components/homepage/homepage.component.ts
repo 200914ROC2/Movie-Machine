@@ -17,7 +17,7 @@ export class HomepageComponent implements OnInit {
     fetch(`${mapi.url}${mapi.endpoints.getPopularMovies}?api_key=${mapi.apiKey}`)
     .then(response => response.json())
     .then(response => {
-      console.log(response.results);
+      console.log(response);
       this.resultList = response.results;
     });
   }
