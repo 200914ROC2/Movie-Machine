@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { movieApiConstants as mapi } from '../../../movie-api-constants';
+import { MovieService } from '../../services/movie.service';
 
 @Component({
   selector: 'app-homepage',
@@ -11,15 +12,13 @@ export class HomepageComponent implements OnInit {
   resultList: any[] = [];
   selectedMovie: Object;
 
-  constructor() { }
+  constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
-    fetch(`${mapi.url}${mapi.endpoints.getPopularMovies}?api_key=${mapi.apiKey}`)
-    .then(response => response.json())
-    .then(response => {
-      console.log(response.results);
-      this.resultList = response.results;
-    });
+    this.movieService.getPopularMovies().subscribe(data => {
+      console.log(data.results);
+      this.resultList = data.results;
+    })
   }
 
 }
