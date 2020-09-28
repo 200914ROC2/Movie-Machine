@@ -9,9 +9,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ResultsListComponent } from './components/results-list/results-list.component';
 import { ResultCardComponent } from './components/result-card/result-card.component';
+import { InfoCardComponent } from './components/info-card/info-card.component';
 
 const appRoutes: Routes = [
-  {path: '', component: HomepageComponent}
+  {path: '', component: HomepageComponent},
+  {path: 'info/:id', component: InfoCardComponent},
 
 
 ]
@@ -23,7 +25,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     ResultsListComponent,
-    ResultCardComponent
+    ResultCardComponent,
+    InfoCardComponent
 
   ],
   imports: [
