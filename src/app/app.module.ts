@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
@@ -10,13 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ResultsListComponent } from './components/results-list/results-list.component';
 import { ResultCardComponent } from './components/result-card/result-card.component';
 import { InfoCardComponent } from './components/info-card/info-card.component';
-
-const appRoutes: Routes = [
-  {path: '', component: HomepageComponent},
-  {path: 'info/:id', component: InfoCardComponent},
-
-
-]
+import { SearchResultsComponent } from './components/search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +21,15 @@ const appRoutes: Routes = [
     FooterComponent,
     ResultsListComponent,
     ResultCardComponent,
-    InfoCardComponent
+    InfoCardComponent,
+    SearchResultsComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

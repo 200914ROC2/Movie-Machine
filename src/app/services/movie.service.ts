@@ -13,4 +13,8 @@ export class MovieService {
   getPopularMovies(): Observable<any> {
     return this.http.get(`${mapi.url}${mapi.endpoints.getPopularMovies}?api_key=${mapi.apiKey}`);
   }
+
+  searchMovies(searchTerms): Observable<any> {
+    return this.http.get(`${mapi.url}${mapi.endpoints.searchMovieByName}?api_key=${mapi.apiKey}&query=${searchTerms}`);
+  }
 }
