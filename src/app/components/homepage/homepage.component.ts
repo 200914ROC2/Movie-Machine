@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { movieApiConstants as mapi } from '../../../movie-api-constants';
 import { MovieService } from '../../services/movie.service';
 
 @Component({
