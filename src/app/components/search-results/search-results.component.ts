@@ -23,7 +23,8 @@ export class SearchResultsComponent implements OnInit {
         this.searchTerms = params["searchTerms"];
         this.route.queryParams
           .forEach((queries: Params) => {
-            this.movieService.searchMovies(this.searchTerms, queries["page"]).subscribe(data => {
+            const pageNumber = (queries["page"]) ? +queries["page"] : 1;
+            this.movieService.searchMovies(this.searchTerms, pageNumber).subscribe(data => {
               console.log(data);
               this.searchData = data;
             })
