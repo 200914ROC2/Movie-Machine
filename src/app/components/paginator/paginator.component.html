@@ -1,1 +1,32 @@
-<p>paginator works!</p>
+<nav aria-label="Pagination" *ngIf="totalPages > 1">
+    <ul class="pagination">
+        <li class="page-item"
+            [ngClass]="{ 'disabled': currentPage == 1 }">
+            <a class="page-link"
+                [routerLink]=""
+                [queryParams]="{ page: currentPage - 1 }"
+                queryParamsHandling="merge">
+                &laquo;
+            </a>
+        </li>
+        <li class="page-item" 
+            *ngFor="let pageNumber of pageNumbers"
+            [ngClass]="{ 'active': pageNumber == currentPage }">
+            <a class="page-link" 
+                [routerLink]=""
+                [queryParams]="{ page: pageNumber }"
+                queryParamsHandling="merge">
+                {{pageNumber}}
+            </a>
+        </li>
+        <li class="page-item"
+            [ngClass]="{ 'disabled': currentPage == totalPages }">
+            <a class="page-link"
+                [routerLink]=""
+                [queryParams]="{ page: currentPage + 1 }"
+                queryParamsHandling="merge">
+                &raquo;
+            </a>
+        </li>
+    </ul>
+</nav>
