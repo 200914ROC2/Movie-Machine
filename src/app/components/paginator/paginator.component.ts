@@ -19,8 +19,8 @@ export class PaginatorComponent implements OnInit {
     this.route.queryParams
       .forEach((params: Params) => {
         this.currentPage = (params["page"]) ? +params["page"] : 1;
+        this.generatePages();
       })
-    this.generatePages();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -28,8 +28,23 @@ export class PaginatorComponent implements OnInit {
   }
 
   generatePages() : void {
+    const pad = 3; //number of page buttons shown = 2*pad + 1
+
     this.pageNumbers = [];
-    for (var i = 1; i <= this.totalPages; i++) {
+
+    let start: number = Math.max(this.currentPage - pad, 1);
+    console.log(`start = ${start}`);
+    let end: number = Math.min(this.currentPage + pad, this.totalPages);
+    console.log(`end = ${end}`);
+    if ((start === 1) && (end !== this.totalPages)) {
+      end = Math.min(end + ((pad + 1) - this.currentPage), this.totalPages);
+      console.log(`end = ${end}`);
+    } else if ((start > 1) && (end === this.totalPages)) {
+      start = Math.max(start - (pad - (this.totalPages - this.currentPage)), 1);
+      console.log(`start = ${start}`);
+    }
+
+    for (var i = start; i <= end; i++) {
       this.pageNumbers.push(i);
     }
   }

@@ -10,13 +10,13 @@
             </a>
         </li>
         <li class="page-item" 
-            *ngFor="let pageNumber of pageNumbers"
+            *ngFor="let pageNumber of pageNumbers; first as firstItem; last as lastItem"
             [ngClass]="{ 'active': pageNumber == currentPage }">
             <a class="page-link" 
                 [routerLink]=""
                 [queryParams]="{ page: pageNumber }"
                 queryParamsHandling="merge">
-                {{pageNumber}}
+                <span *ngIf="firstItem && (pageNumber > 1)">&#8230;</span>{{pageNumber}}<span *ngIf="lastItem && (pageNumber < totalPages)">&#8230;</span>
             </a>
         </li>
         <li class="page-item"

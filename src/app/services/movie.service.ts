@@ -10,8 +10,8 @@ export class MovieService {
 
   constructor(private http: HttpClient) { }
 
-  getPopularMovies(): Observable<any> {
-    return this.http.get(`${mapi.url}${mapi.endpoints.getPopularMovies}?api_key=${mapi.apiKey}`);
+  getPopularMovies(page: number): Observable<any> {
+    return this.http.get(`${mapi.url}${mapi.endpoints.getPopularMovies}?api_key=${mapi.apiKey}&page=${page}`);
   }
 
   searchMovies(searchTerms: string, page: number): Observable<any> {
