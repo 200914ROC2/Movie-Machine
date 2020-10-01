@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-paginator',
@@ -13,7 +13,10 @@ export class PaginatorComponent implements OnInit {
   currentPage: number;
   pageNumbers: number[] = [];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router  
+  ) { }
 
   ngOnInit(): void {
     this.route.queryParams
@@ -27,7 +30,7 @@ export class PaginatorComponent implements OnInit {
     this.generatePages();
   }
 
-  generatePages() : void {
+  generatePages(): void {
     const pad = 3; //number of page buttons shown = 2*pad + 1
 
     this.pageNumbers = [];
@@ -47,5 +50,11 @@ export class PaginatorComponent implements OnInit {
     for (var i = start; i <= end; i++) {
       this.pageNumbers.push(i);
     }
+  }
+
+  goToPage(pageToGo): void {
+    this.router.navigate([], { 
+      queryParams: { page: pageToGo },
+      queryParamsHandling: "merge"});
   }
 }
