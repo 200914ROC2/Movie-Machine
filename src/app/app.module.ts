@@ -12,6 +12,7 @@ import { ResultsListComponent } from './components/results-list/results-list.com
 import { ResultCardComponent } from './components/result-card/result-card.component';
 import { InfoCardComponent } from './components/info-card/info-card.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SearchResultsComponent } from './components/search-results/search-resul
     ResultsListComponent,
     ResultCardComponent,
     InfoCardComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    PaginatorComponent
 
   ],
   imports: [

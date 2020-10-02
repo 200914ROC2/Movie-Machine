@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { MovieService } from '../../services/movie.service';
 
 @Component({
@@ -10,14 +11,23 @@ export class HomepageComponent implements OnInit {
 
   resultList: any[] = [];
   selectedMovie: Object;
+  totalPages: number = 0;
 
-  constructor(private movieService: MovieService) { }
+  constructor(
+    private movieService: MovieService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    this.movieService.getPopularMovies().subscribe(data => {
-      console.log(data.results);
-      this.resultList = data.results;
-    })
+    this.route.queryParams
+      .forEach((params: Params) => {
+        const pageNumber: number = (params["page"]) ? +params["page"] : 1;
+        this.movieService.getPopularMovies(pageNumber).subscribe(data => {
+          console.log(data.results);
+          this.resultList = data.results;
+          this.totalPages = data.total_pages;
+        })
+      })
   }
 
 }

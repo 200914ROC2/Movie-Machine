@@ -21,11 +21,15 @@ export class SearchResultsComponent implements OnInit {
     this.route.params
       .forEach((params: Params) => {
         this.searchTerms = params["searchTerms"];
-        this.movieService.searchMovies(this.searchTerms).subscribe(data => {
-          console.log(data);
-          this.searchData = data;
-        })
-      })
+        this.route.queryParams
+          .forEach((queries: Params) => {
+            const pageNumber: number = (queries["page"]) ? +queries["page"] : 1;
+            this.movieService.searchMovies(this.searchTerms, pageNumber).subscribe(data => {
+              console.log(data);
+              this.searchData = data;
+            })
+          })
+      });
   }
 
 }
