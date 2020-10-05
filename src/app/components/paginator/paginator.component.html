@@ -33,16 +33,18 @@
             </ul>
         </li>
         <li class="nav-item">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">Page</div>
+            <form #pageInput="ngForm" class="form-inline" (ngSubmit)="goToPage(pageInput.value.page)">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Page</div>
+                    </div>
+                    <input name="page" type="text" class="form-control" placeholder="{{currentPage}}" size="{{totalPages.toString().length}}" pattern="\d{1,{{totalPages.toString().length}}}" required ngModel/>
+                    <div class="input-group-append">
+                        <div class="input-group-text">/{{totalPages}}</div>
+                        <button class="btn btn-primary" type="submit" [disabled]="pageInput.invalid || (pageInput.value.page < 1) || (pageInput.value.page > totalPages)">Go</button>
+                    </div>
                 </div>
-                <input #pageInput="ngModel" type="text" class="form-control" id="pageInput" placeholder="{{currentPage}}" size="{{totalPages.toString().length}}" pattern="\d{1,{{totalPages.toString().length}}}" [(ngModel)]="pageToGo">
-                <div class="input-group-append">
-                    <div class="input-group-text">/{{totalPages}}</div>
-                    <button class="btn btn-primary" type="button" (click)="goToPage(pageInput.value)" [disabled]="pageInput.invalid || !pageInput.value || (pageInput.value < 1) || (pageInput.value > totalPages)">Go</button>
-                </div>
-            </div>
+            </form>
         </li>
     </ul>
 </nav>

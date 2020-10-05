@@ -52,7 +52,7 @@ export class PaginatorComponent implements OnInit {
     }
   }
 
-  goToPage(pageToGo): void {
+  goToPage(pageToGo: number): void {
     this.router.navigate([], { 
       queryParams: { page: pageToGo },
       queryParamsHandling: "merge"});

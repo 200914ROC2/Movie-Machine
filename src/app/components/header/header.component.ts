@@ -7,14 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  searchTerms: string = '';
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  search(): void {
-    this.router.navigateByUrl(`search/${this.searchTerms}`);
+  search(searchTerms: string): void {
+    this.router.navigateByUrl(`search/${searchTerms}`);
   }
 }
