@@ -11,7 +11,7 @@ export class BackendService {
 
   constructor(private http: HttpClient) { }
 
-  registerUser(user: User): Observable<User> {
+  registerUser(user): Observable<any> {
     return this.http.post<User>(`${bapi.url}${bapi.endpoints.register}`, user);
   }
 }

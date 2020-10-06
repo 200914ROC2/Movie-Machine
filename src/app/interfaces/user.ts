@@ -2,7 +2,7 @@ export interface User {
     id: number;
     username: string;
     password: string;
-    password_hash: string;
+    passwordHash: string;
     firstname: string;
     lastname: string;
 }

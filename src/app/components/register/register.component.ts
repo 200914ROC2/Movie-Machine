@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from 'src/app/services/backend.service';
-import { User } from '../../interfaces/user';
 
 @Component({
   selector: 'app-register',
@@ -8,6 +7,9 @@ import { User } from '../../interfaces/user';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  message: string;
+  buttonDisabled: boolean = false;
+  success: boolean = false;
 
   constructor(private backendService: BackendService) { }
 
@@ -15,15 +17,30 @@ export class RegisterComponent implements OnInit {
   }
 
   submitRegistration(formData): void {
-    let user: User = {
-      id: 0,
+    if (formData.password !== formData.confirmPass) {
+      this.message = "Passwords do not match.";
+      return;
+    }
+
+    this.buttonDisabled = true;
+    const user = {
       username: formData.username,
       password: formData.password,
-      password_hash: undefined,
       firstname: formData.firstName,
       lastname: formData.lastName
     }
-    console.log(user);
-    this.backendService.registerUser(user).subscribe(data => console.log(data), (e) => console.log(e), () => console.log('done'));
+
+    this.backendService.registerUser(user).subscribe(data => {
+      // If result is a user, switch to success screen,
+      // otherwise show error message
+      if (data.id) {
+        this.success = true;
+      } else if (data.message) {
+        this.message = data.message;
+        this.buttonDisabled = false;
+      }
+    }, (e) => {
+      console.log(e);
+    });
   }
 }
