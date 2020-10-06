@@ -13,6 +13,7 @@ import { ResultCardComponent } from './components/result-card/result-card.compon
 import { InfoCardComponent } from './components/info-card/info-card.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     ResultCardComponent,
     InfoCardComponent,
     SearchResultsComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    RegisterComponent
 
   ],
   imports: [
