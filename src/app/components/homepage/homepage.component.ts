@@ -28,7 +28,7 @@ export class HomepageComponent implements OnInit {
           this.totalPages = data.total_pages;
         })
       })
-      if(sessionStorage.getItem('user')) {
+      if(localStorage.getItem('user')) {
         console.log(sessionStorage.getItem('user'));
       }
   }

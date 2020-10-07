@@ -10,12 +10,12 @@ export class SessionService {
   constructor() { }
 
   updateUserSessionData(data:any) {
-    sessionStorage.setItem('user', JSON.stringify(data));
+    localStorage.setItem('user', JSON.stringify(data));
     this.userSessionData$.next(data);
   }
 
   clearUserSessionData() {
-    sessionStorage.clear();
+    localStorage.clear();
     this.userSessionData$.next();
   }
 
