@@ -16,6 +16,7 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FavoriteButtonComponent } from './components/favorite-button/favorite-button.component';
 import { LoginComponent } from './components/login/login.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LoginComponent } from './components/login/login.component';
     PaginatorComponent,
     RegisterComponent,
     FavoriteButtonComponent,
-    LoginComponent
+    LoginComponent,
+    FavoritesComponent
 
   ],
   imports: [
