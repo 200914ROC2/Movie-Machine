@@ -6,10 +6,10 @@
                 <a class="nav-link" routerLink="/register">Register</a>
             </li>
             <li *ngIf="userData" class="nav-item">
-                <p class="nav-link" routerLink="/register">{{userData.username}}</p>
+                <a class="nav-link" routerLink="/register">{{userData.username}}</a>
             </li>
             <li *ngIf="userData" class="nav-item">
-                <p class="nav-link" (click)="logout()">Logout</p>
+                <a class="nav-link" (click)="logout()">Logout</a>
             </li>
         </ul>
         <form #searchBar="ngForm" class="form-inline" (ngSubmit)="search(searchBar.value.terms)">
