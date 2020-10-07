@@ -1,8 +1,14 @@
 <div class="container">
     <h1>Favorites</h1>
-    <div class="row" *ngIf="resultList.length > 0">
-        <div class="col-md-6" *ngFor="let result of resultList">
-            <app-result-card [data]="result"></app-result-card>
+    <span *ngIf="!userData">Log in to see your favorites here.</span>
+    <div *ngIf="userData">
+        <div class="row" *ngIf="resultList.length > 0">
+            <div class="col-md-6" *ngFor="let result of resultList">
+                <app-result-card [data]="result"></app-result-card>
+            </div>
         </div>
+        <span *ngIf="resultList.length === 0">
+            You have no favorites. You can add a favorite movie by clicking the <i class="far fa-heart"></i> button on a movie.
+        </span>
     </div>
 </div>
