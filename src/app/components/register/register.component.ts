@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   message: string;
   buttonDisabled: boolean = false;
+  registerMode: boolean = true;
   success: boolean = false;
 
   constructor(private backendService: BackendService,
@@ -18,6 +19,35 @@ export class RegisterComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  changeMode() {
+    console.log('Changing mode.');
+    this.registerMode = !this.registerMode;
+  }
+
+  submitLogin(formData) {
+    this.buttonDisabled = true;
+
+    const creds = {
+      username: formData.username,
+      password: formData.password,
+    }
+
+    this.backendService.login(creds).subscribe(data => {
+      // If result is a user, switch to success screen,
+      // otherwise show error message
+      if (data.id) {
+        this.sessionService.updateUserSessionData(data);
+        this.router.navigateByUrl('/');
+      } else if (data.message) {
+        this.message = data.message;
+        this.buttonDisabled = false;
+      }
+    }, (e) => {
+      console.log(e);
+    });
+
   }
 
   submitRegistration(formData): void {

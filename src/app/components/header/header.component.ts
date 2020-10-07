@@ -19,6 +19,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.subscription = this.sessionService.getUserSessionData()
       .subscribe(data => this.userData = data || null);
+    if(localStorage.getItem('user') && !this.userData) {
+      console.log('localData exists but not set');
+      const localData = JSON.parse(localStorage.getItem('user'));
+      this.sessionService.updateUserSessionData(localData);
+    }
   }
 
   search(searchTerms: string): void {

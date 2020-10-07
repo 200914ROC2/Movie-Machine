@@ -14,4 +14,8 @@ export class BackendService {
     return this.http.post(`${bapi.url}${bapi.endpoints.register}`, user);
   }
 
+  login(creds): Observable<any> {
+    return this.http.post(`${bapi.url}${bapi.endpoints.login}`, creds);
+  }
+
 }
