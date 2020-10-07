@@ -11,7 +11,10 @@
         </ul>
         <ul class="navbar-nav mr-auto" *ngIf="userData">
             <li class="nav-item">
-                <a class="nav-link" routerLink="/register">{{userData.username}}</a>
+                <span class="navbar-text">{{userData.username}}</span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/favorites">Favorites</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" (click)="logout()">Logout</a>

@@ -1,1 +1,8 @@
-<p>favorites works!</p>
+<div class="container">
+    <h1>Favorites</h1>
+    <div class="row" *ngIf="resultList.length > 0">
+        <div class="col-md-6" *ngFor="let result of resultList">
+            <app-result-card [data]="result"></app-result-card>
+        </div>
+    </div>
+</div>

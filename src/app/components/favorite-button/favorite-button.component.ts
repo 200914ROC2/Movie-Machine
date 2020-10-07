@@ -25,6 +25,7 @@ export class FavoriteButtonComponent implements OnInit {
       this.userData = data;
       this.updateStatus();
     })
+    this.updateStatus();
   }
   
   ngOnChanges(changes: SimpleChanges) {
