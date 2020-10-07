@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from 'src/app/services/backend.service';
+import { SessionService } from 'src/app/services/session.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +13,9 @@ export class RegisterComponent implements OnInit {
   buttonDisabled: boolean = false;
   success: boolean = false;
 
-  constructor(private backendService: BackendService, private router: Router) { }
+  constructor(private backendService: BackendService,
+    private sessionService: SessionService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -35,8 +38,7 @@ export class RegisterComponent implements OnInit {
       // If result is a user, switch to success screen,
       // otherwise show error message
       if (data.id) {
-        sessionStorage.setItem('user', JSON.stringify(data));
-        this.success = true;
+        this.sessionService.updateUserSessionData(data);
         this.router.navigateByUrl('/');
       } else if (data.message) {
         this.message = data.message;
