@@ -15,6 +15,7 @@ import { SearchResultsComponent } from './components/search-results/search-resul
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FavoriteButtonComponent } from './components/favorite-button/favorite-button.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FavoriteButtonComponent } from './components/favorite-button/favorite-b
     SearchResultsComponent,
     PaginatorComponent,
     RegisterComponent,
-    FavoriteButtonComponent
+    FavoriteButtonComponent,
+    LoginComponent
 
   ],
   imports: [

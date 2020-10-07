@@ -26,6 +26,9 @@
                 <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid || buttonDisabled">Register</button>
             </div>
         </form>
+        <div>
+            <a class="btn btn-link" routerLink="/login">Already have an account? Login!</a>
+        </div>
         <div class="alert alert-danger" role="alert" *ngIf="message">
             {{message}}
         </div>

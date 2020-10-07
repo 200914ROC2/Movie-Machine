@@ -30,4 +30,9 @@ export class BackendService {
       });
     });
   }
+  
+  login(creds): Observable<any> {
+    return this.http.post(`${bapi.url}${bapi.endpoints.login}`, creds);
+  }
+
 }
