@@ -18,6 +18,7 @@ export class InfoCardComponent implements OnInit {
   imageUrl = '';
   title: string;
   description: string;
+  id: number;
 
   ngOnInit(): void {
     this.card = this.route.snapshot.paramMap.get("id");
@@ -28,6 +29,7 @@ export class InfoCardComponent implements OnInit {
       this.imageUrl = "https://image.tmdb.org/t/p/original" + response.backdrop_path;
       this.title = response.original_title;
       this.description = response.overview;
+      this.id = response.id;
     });
   }
 

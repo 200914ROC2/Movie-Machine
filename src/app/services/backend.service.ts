@@ -30,7 +30,15 @@ export class BackendService {
       });
     });
   }
-  
+
+  setFavorite(userId: number, movieId: number): Observable<any> {
+    return this.http.post(`${bapi.url}${bapi.endpoints.favorites}?userId=${userId}&movieId=${movieId}`, null);
+  }
+
+  unsetFavorite(userId: number, movieId: number): Observable<any> {
+    return this.http.delete(`${bapi.url}${bapi.endpoints.favorites}?userId=${userId}&movieId=${movieId}`);
+  }
+
   login(creds): Observable<any> {
     return this.http.post(`${bapi.url}${bapi.endpoints.login}`, creds);
   }

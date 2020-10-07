@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { BackendService } from 'src/app/services/backend.service';
 import { SessionService } from 'src/app/services/session.service';
 
@@ -9,7 +10,8 @@ import { SessionService } from 'src/app/services/session.service';
 })
 export class FavoriteButtonComponent implements OnInit {
   @Input() movieId: number;
-  isSignedIn: boolean;
+  userData;
+  subscription: Subscription;
   isFavorite: boolean;
 
   constructor(
@@ -18,14 +20,27 @@ export class FavoriteButtonComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.sessionService.getUserSessionData().forEach(session => {
-      if (session) {
-        this.backendService.isFavorite(session.id, this.movieId).subscribe(isFavorite => this.isFavorite = isFavorite);
-        this.isSignedIn = true;
-      } else {
-        this.isSignedIn = false;
-      }
+    this.userData = JSON.parse(localStorage.getItem('user'));
+    this.sessionService.getUserSessionData().forEach(data => {
+      this.userData = data;
+      this.updateStatus();
     })
   }
+  
+  ngOnChanges(changes: SimpleChanges) {
+    this.updateStatus();
+  }
 
+  updateStatus(): void {
+    if (!this.userData) return;
+    this.backendService.isFavorite(this.userData.id, this.movieId).subscribe(isFavorite => this.isFavorite = isFavorite);
+  }
+
+  toggleFavorite(): void {
+    if (this.isFavorite) {
+      this.backendService.unsetFavorite(this.userData.id, this.movieId).subscribe(data => this.updateStatus());
+    } else {
+      this.backendService.setFavorite(this.userData.id, this.movieId).subscribe(data => this.updateStatus());
+    }
+  }
 }
