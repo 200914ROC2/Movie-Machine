@@ -3,7 +3,7 @@
         <a class="navbar-brand" routerLink="/"> <img class="logo" src="assets/img/logo.png"> Movie Machine</a>
         <ul class="navbar-nav mr-auto">
             <li *ngIf="!userData" class="nav-item">
-                <a class="nav-link" routerLink="/register">Register</a>
+                <a class="nav-link" routerLink="/register">Register/Login</a>
             </li>
             <li *ngIf="userData" class="nav-item">
                 <a class="nav-link" routerLink="/register">{{userData.username}}</a>

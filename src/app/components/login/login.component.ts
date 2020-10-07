@@ -4,11 +4,11 @@ import { SessionService } from 'src/app/services/session.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class LoginComponent implements OnInit {
   message: string;
   buttonDisabled: boolean = false;
   success: boolean = false;
@@ -20,21 +20,15 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submitRegistration(formData): void {
-    if (formData.password !== formData.confirmPass) {
-      this.message = "Passwords do not match.";
-      return;
-    }
-
+  submitLogin(formData) {
     this.buttonDisabled = true;
-    const user = {
+
+    const creds = {
       username: formData.username,
       password: formData.password,
-      firstname: formData.firstName,
-      lastname: formData.lastName
     }
 
-    this.backendService.registerUser(user).subscribe(data => {
+    this.backendService.login(creds).subscribe(data => {
       // If result is a user, switch to success screen,
       // otherwise show error message
       if (data.id) {
@@ -48,4 +42,5 @@ export class RegisterComponent implements OnInit {
       console.log(e);
     });
   }
+
 }

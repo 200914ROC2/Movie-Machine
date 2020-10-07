@@ -14,6 +14,7 @@ import { InfoCardComponent } from './components/info-card/info-card.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RegisterComponent } from './components/register/register.component';
     InfoCardComponent,
     SearchResultsComponent,
     PaginatorComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
 
   ],
   imports: [
