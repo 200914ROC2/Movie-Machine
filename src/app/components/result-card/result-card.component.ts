@@ -12,7 +12,6 @@ export class ResultCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.data);
     if(this.data.poster_path) {
       this.imageUrl = "https://image.tmdb.org/t/p/original" + this.data.poster_path;
     }

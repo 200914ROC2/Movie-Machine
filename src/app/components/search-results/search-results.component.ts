@@ -25,7 +25,6 @@ export class SearchResultsComponent implements OnInit {
           .forEach((queries: Params) => {
             const pageNumber: number = (queries["page"]) ? +queries["page"] : 1;
             this.movieService.searchMovies(this.searchTerms, pageNumber).subscribe(data => {
-              console.log(data);
               this.searchData = data;
             })
           })
