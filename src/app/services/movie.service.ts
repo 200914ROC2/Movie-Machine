@@ -17,4 +17,8 @@ export class MovieService {
   searchMovies(searchTerms: string, page: number): Observable<any> {
     return this.http.get(`${mapi.url}${mapi.endpoints.searchMovieByName}?api_key=${mapi.apiKey}&query=${searchTerms}&page=${page}`);
   }
+
+  getMovieById(movieId: number) {
+    return this.http.get(`${mapi.url}${mapi.endpoints.getMovieById}/${movieId}?api_key=${mapi.apiKey}`);
+  }
 }

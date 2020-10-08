@@ -3,6 +3,7 @@ export const backendApiConstants = {
     //url: 'http://localhost:8080/movie-machine-be',
     endpoints: {
         register: '/user/register',
+        favorites: '/user/favorite',
         login: '/user/login'
     }
 }

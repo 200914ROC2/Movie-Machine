@@ -14,7 +14,9 @@ import { InfoCardComponent } from './components/info-card/info-card.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { RegisterComponent } from './components/register/register.component';
+import { FavoriteButtonComponent } from './components/favorite-button/favorite-button.component';
 import { LoginComponent } from './components/login/login.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { LoginComponent } from './components/login/login.component';
     SearchResultsComponent,
     PaginatorComponent,
     RegisterComponent,
-    LoginComponent
+    FavoriteButtonComponent,
+    LoginComponent,
+    FavoritesComponent
 
   ],
   imports: [
