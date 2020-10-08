@@ -1,0 +1,14 @@
+<div class="info-card"
+  style="background: linear-gradient(rgba(64,64,64,0), rgba(64,64,64,1)),
+    url({{imageUrl}});">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card-title">
+        <h3>{{title}} <app-favorite-button [movieId]="id"></app-favorite-button></h3>
+      </div>
+      <div class="card-overview">
+        {{description}}
+      </div>
+    </div>
+  </div>
+</div>

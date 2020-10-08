@@ -1,0 +1,3 @@
+<button type="button" class="favButton" *ngIf="userData" (click)="toggleFavorite()">
+    <i class="fa-heart" [ngClass]="{ 'far': !isFavorite, 'fas': isFavorite }"></i>
+</button>

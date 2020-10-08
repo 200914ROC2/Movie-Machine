@@ -1,0 +1,10 @@
+<div class="container">
+    <h1>{{searchData.total_results}} results for "{{searchTerms}}"</h1>
+    <app-paginator [totalPages]="searchData.total_pages"></app-paginator>
+    <div class="row" *ngIf="searchData.results.length > 0">
+        <div class="col-md-6" *ngFor="let result of searchData.results">
+            <app-result-card [data]="result"></app-result-card>
+        </div>
+    </div>
+    <app-paginator [totalPages]="searchData.total_pages"></app-paginator>
+</div>

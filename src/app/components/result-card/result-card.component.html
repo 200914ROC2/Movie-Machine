@@ -1,0 +1,25 @@
+
+<a [routerLink]="['/info', data.id]">
+  <div class="card">
+    <div class="row no-gutters">
+      <div class="col-sm-4" style="background: #868e96;">
+        <img *ngIf="imageUrl" src="{{imageUrl}}" width="140" height="40">
+        <img *ngIf="!imageUrl" src="assets/img/placeholder.png" width="140" height="40">
+      </div>
+      <div class="col-sm-8">
+        <div class="card-body">
+          <div class="card-title">
+            <h5 style="text-overflow:ellipses; white-space:no-wrap">{{data.title}}</h5>
+          </div>
+          <div>
+            <p class="d-block">{{
+              (data.overview.length > 250) ?
+              (data.overview | slice:0:250) + '...':
+              (data.overview)
+            }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

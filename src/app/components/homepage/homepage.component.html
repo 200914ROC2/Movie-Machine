@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row" *ngIf="resultList.length == 0">
+    <h2>No results.</h2>
+  </div>
+  <app-paginator [totalPages]="totalPages"></app-paginator>
+  <div class="row" *ngIf="resultList.length > 0">
+    <div class="col-md-6" *ngFor="let result of resultList">
+      <app-result-card [data]="result"></app-result-card>
+    </div>
+  </div>
+  <app-paginator [totalPages]="totalPages"></app-paginator>
+</div>

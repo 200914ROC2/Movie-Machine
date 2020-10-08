@@ -1,0 +1,50 @@
+<nav aria-label="Pagination" class="p-2" *ngIf="totalPages > 1">
+    <ul class="nav justify-content-around">
+        <li class="nav-item">
+            <ul class="pagination">
+                <li class="page-item"
+                    [ngClass]="{ 'disabled': currentPage == 1 }">
+                    <a class="page-link"
+                        [routerLink]=""
+                        [queryParams]="{ page: currentPage - 1 }"
+                        queryParamsHandling="merge">
+                        &laquo;
+                    </a>
+                </li>
+                <li class="page-item" 
+                    *ngFor="let pageNumber of pageNumbers; first as firstItem; last as lastItem"
+                    [ngClass]="{ 'active': pageNumber == currentPage }">
+                    <a class="page-link" 
+                        [routerLink]=""
+                        [queryParams]="{ page: pageNumber }"
+                        queryParamsHandling="merge">
+                        <span *ngIf="firstItem && (pageNumber > 1)">&#8230;</span>{{pageNumber}}<span *ngIf="lastItem && (pageNumber < totalPages)">&#8230;</span>
+                    </a>
+                </li>
+                <li class="page-item"
+                    [ngClass]="{ 'disabled': currentPage == totalPages }">
+                    <a class="page-link"
+                        [routerLink]=""
+                        [queryParams]="{ page: currentPage + 1 }"
+                        queryParamsHandling="merge">
+                        &raquo;
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <form #pageInput="ngForm" class="form-inline" (ngSubmit)="goToPage(pageInput.value.page)">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Page</div>
+                    </div>
+                    <input name="page" type="text" class="form-control" placeholder="{{currentPage}}" size="{{totalPages.toString().length}}" pattern="\d{1,{{totalPages.toString().length}}}" required ngModel/>
+                    <div class="input-group-append">
+                        <div class="input-group-text">/{{totalPages}}</div>
+                        <button class="btn btn-primary" type="submit" [disabled]="pageInput.invalid || (pageInput.value.page < 1) || (pageInput.value.page > totalPages)">Go</button>
+                    </div>
+                </div>
+            </form>
+        </li>
+    </ul>
+</nav>
