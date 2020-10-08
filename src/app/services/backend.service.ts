@@ -32,7 +32,7 @@ export class BackendService {
   }
 
   setFavorite(userId: number, movieId: number): Observable<any> {
-    return this.http.post(`${bapi.url}${bapi.endpoints.favorites}?userId=${userId}&movieId=${movieId}`, null);
+    return this.http.post(`${bapi.url}${bapi.endpoints.favorites}?userId=${userId}&movieId=${movieId}`, {});
   }
 
   unsetFavorite(userId: number, movieId: number): Observable<any> {
